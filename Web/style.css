@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, #f4f4f4, #ccc);
+    background-size: 100% 300px;
+    background-position: 0% 100%;
+    animation: background-animation 10s ease infinite;
+}
+@keyframes background-animation {
+    0% {
+        background-position: 0% 100%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+    }
+}
+.container {
+    width: 10 0 0px;
+    height: 254px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 10px;
+    padding: 5px 25px;
+    background-color: rgb(76, 164, 164);
+    border-radius: 80px;
+    border: none;
+    color: rgb(22, 2, 2);
+    position: relative;
+    cursor: pointer;
+    font-weight: 900;
+    transition-duration: .20s;
+    background: linear-gradient(0deg, #f8f5f5, #f0f3ef);
+}
+.container:before,
+.container:after {
+    content: '';
+    text-justify:auto;
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border-radius: 550px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,
+            #0000ff, #00ff00, #ffff00, #ff0000);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: steam 100s linear infinite;
+}
+@keyframes steam {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+.container:after {
+    filter: blur(100px);
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+    animation: input-animation 1s ease;
+}
+@keyframes input-animation {
+    0% {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(1);
+        opacity: 1;
+    }
+}
+button {
+    --border-radius: 1%;
+    --border-width: 1px;
+    appearance: none;
+    position: relative;
+    padding: 0.5em 1em;
+    border: 1;
+    background-color: #021a0b;
+    font-family: "Roboto", Arial, "Segoe UI", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    z-index: 2;
+}
+button::after {
+    --m-i: linear-gradient(#2c5412, #000);
+    --m-o: content-box, padding-box;
+    content: "";
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: var(--border-width);
+    border-radius: var(--border-radius);
+    background-image: conic-gradient(#488cfb,
+            #29dbbc,
+            #ddf505,
+            #ff9f0e,
+            #e440bb,
+            #655adc,
+            #488cfb);
+    -webkit-mask-image: var(--m-i), var(--m-i);
+    mask-image: var(--m-i), var(--m-i);
+    -webkit-mask-origin: var(--m-o);
+    mask-origin: var(--m-o);
+    /* -webkit-mask-clip: var(--m-o); */
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    filter: hue-rotate(0);
+    animation: rotate-hue linear 800ms infinite;
+    animation-play-state: paused;
+}
+button:hover::after {
+    animation-play-state:var(--border-width);
+}
+@keyframes rotate-hue {
+    to {
+        filter: hue-rotate(1turn);
+    }
+}
+button,
+button::after {
+    box-sizing: border-box;
+}
+button:active {
+    --border-width: 5px;
+}
+#qr-code {
+    margin-top: 30px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    animation: qr-code-animation 1s ease;
+    transform-style: preserve-3d;
+}
+@keyframes qr-code-animation {
+    0% {
+        transform: scale(0.5) rotateZ(0deg);
+        opacity: 0;
+    }                                                                            
+    100% {
+        transform: scale(1) rotateZ(0deg);
+        opacity: 1;
+    }
+}
+.loader {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.loader.active {
+    display: block;
+}
+.loader-inner {
+    width: 40px;
+    height: 40px;
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #3498db;
+    animation: spin 1.2s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
