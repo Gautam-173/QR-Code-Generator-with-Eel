@@ -20,3 +20,5 @@ You can install the required packages using pip:
 
 ```bash
 pip install pyqrcode eel
+
+![Qr-Code-Generator](https://github.com/user-attachments/assets/5084dd26-bb4a-4817-97c6-71738b69a138)
